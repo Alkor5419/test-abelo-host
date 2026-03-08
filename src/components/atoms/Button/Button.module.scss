@@ -1,0 +1,11 @@
+.primary {
+  padding: 8px;
+  border: 1px solid $button-outline-border;
+  border-radius: 4px;
+  background-color: $button-primary-bg;
+  color: $button-primary-text;
+
+  &:hover {
+    background-color: $button-primary-hover;
+  }
+}

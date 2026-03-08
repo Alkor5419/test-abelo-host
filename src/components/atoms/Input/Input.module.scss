@@ -1,0 +1,22 @@
+.inputLabel {
+  color: $bg-secondary;
+}
+
+.input {
+  border: 1px solid $input-border;
+  background-color: $input-bg;
+  color: $text-primary;
+
+  &:focus {
+    border: 1px solid $primary;
+    box-shadow: $input-focus-shadow;
+  }
+}
+
+.error {
+  color: $error;
+}
+
+.inputError {
+  border: 1px solid $error;
+}

@@ -1,0 +1,12 @@
+@import "@/styles/mixins";
+
+.wrap {
+  @include flex-center;
+
+  height: calc(100vh - $header-height - $footer-height);
+  background-color: $secondary-light;
+
+  @include sm {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,14 @@
+.container {
+  width: 600px;
+  padding: 50px;
+  border: 1px solid $border-dark;
+  border-radius: 4px;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+.error {
+  color: $error;
+}

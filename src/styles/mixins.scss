@@ -1,0 +1,289 @@
+@import "./variables";
+
+// ============================================================================
+// МЕДИА-ЗАПРОСЫ
+// ============================================================================
+
+@mixin sm {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: $breakpoint-2xl) {
+    @content;
+  }
+}
+
+@mixin mobile-first($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// ============================================================================
+// ТИПОГРАФИКА
+// ============================================================================
+
+@mixin heading-1 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+
+  @include md {
+    font-size: $font-size-5xl;
+  }
+}
+
+@mixin heading-2 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+
+  @include md {
+    font-size: $font-size-4xl;
+  }
+}
+
+@mixin heading-3 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+
+  @include md {
+    font-size: $font-size-3xl;
+  }
+}
+
+@mixin heading-4 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+
+  @include md {
+    font-size: $font-size-2xl;
+  }
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+}
+
+@mixin small-text {
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+}
+
+@mixin caption {
+  color: $text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-normal;
+}
+
+// ============================================================================
+// FLEXBOX
+// ============================================================================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// ============================================================================
+// GRID
+// ============================================================================
+
+@mixin grid-auto-fit($min-width: 250px) {
+  display: grid;
+  gap: $spacing-4;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+}
+
+@mixin grid-auto-fill($min-width: 250px) {
+  display: grid;
+  gap: $spacing-4;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+}
+
+// ============================================================================
+// КНОПКИ
+// ============================================================================
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2 $spacing-4;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  transition: all $duration-150 $ease-in-out;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+
+  background-color: $button-primary-bg;
+  color: $button-primary-text;
+
+  &:hover:not(:disabled) {
+    background-color: $button-primary-hover;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $button-primary-active;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+
+  background-color: $button-secondary-bg;
+  color: $button-secondary-text;
+
+  &:hover:not(:disabled) {
+    background-color: $button-secondary-hover;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $button-secondary-active;
+  }
+}
+
+@mixin button-outline {
+  @include button-base;
+
+  border-color: $button-outline-border;
+  background-color: transparent;
+  color: $button-outline-text;
+
+  &:hover:not(:disabled) {
+    background-color: $button-outline-hover-bg;
+  }
+}
+
+// ============================================================================
+// ФОРМЫ
+// ============================================================================
+
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-2 $spacing-3;
+  border: 1px solid $input-border;
+  border-radius: $radius-md;
+  background-color: $input-bg;
+  color: $text-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  transition: all $duration-150 $ease-in-out;
+
+  &::placeholder {
+    color: $input-placeholder;
+  }
+
+  &:focus {
+    border-color: $input-focus-border;
+    box-shadow: $input-focus-shadow;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $gray-100;
+    cursor: not-allowed;
+  }
+}
+
+@mixin input-error {
+  border-color: $input-error-border;
+
+  &:focus {
+    border-color: $input-error-border;
+    box-shadow: $input-error-shadow;
+  }
+}
+
+// ============================================================================
+// КОНТЕЙНЕРЫ
+// ============================================================================
+
+@mixin container {
+  width: 100%;
+  padding-right: $spacing-4;
+  padding-left: $spacing-4;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include sm {
+    max-width: $breakpoint-sm;
+  }
+
+  @include md {
+    max-width: $breakpoint-md;
+  }
+
+  @include lg {
+    max-width: $breakpoint-lg;
+  }
+
+  @include xl {
+    max-width: $breakpoint-xl;
+  }
+
+  @include xxl {
+    max-width: $breakpoint-2xl;
+  }
+}

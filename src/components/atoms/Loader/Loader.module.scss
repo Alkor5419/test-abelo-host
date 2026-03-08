@@ -1,0 +1,79 @@
+@import "@/styles/variables";
+
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+}
+
+.fullscreen {
+  position: fixed;
+  z-index: $z-modal;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay {
+  position: fixed;
+  z-index: $z-modal-backdrop;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($black, 0.5);
+  inset: 0;
+}
+
+.text {
+  margin-top: $spacing-2;
+  color: $text-secondary;
+  font-size: $font-size-sm;
+}
+
+.spinner {
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  &.primary .blade {
+    background-color: $primary;
+  }
+
+  &.secondary .blade {
+    background-color: $secondary;
+  }
+
+  &.white .blade {
+    background-color: $white;
+  }
+}
+
+.blade {
+  position: absolute;
+  top: 37%;
+  left: 44.5%;
+  width: 10%;
+  height: 25%;
+  border-radius: $radius-full;
+  animation: spin $duration-1000 linear infinite;
+  background-color: currentcolor;
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{-0.125 * (8 - $i)}s;
+      transform: rotate(#{($i - 1) * 45deg}) translateY(-150%);
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.15;
+  }
+}
