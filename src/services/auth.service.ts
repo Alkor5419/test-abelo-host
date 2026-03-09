@@ -18,17 +18,6 @@ class AuthService {
     }
   }
 
-  async getCurrentUser(): Promise<User | null> {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) return null;
-
-      return null;
-    } catch {
-      return null;
-    }
-  }
-
   logout(): void {
     localStorage.removeItem("token");
   }

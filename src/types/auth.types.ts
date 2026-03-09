@@ -23,6 +23,4 @@ export interface AuthState {
 
   login: (credentials: LoginCredentials) => Promise<User>;
   logout: () => void;
-  isAuthenticated: () => boolean;
-  updateUser: (userData: Partial<User>) => void;
 }
